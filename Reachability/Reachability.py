@@ -43,11 +43,12 @@ class Reachability:
         Dx_delta_x = self.mat_vec_mul(self.D_x, delta_x)
         Dw_delta_w = self.mat_vec_mul(self.D_w, delta_w)
 
-        abs_margin = self.vec_add(self.vec_abs(Dx_delta_x), self.vec_abs(Dw_delta_w))
+        abs_margin = self.vec_add(self.vec_abs(Dx_delta_x), self.vec_abs(Dw_delta_w)) # Dx delta(x) + Dw delta(w)
 
         f_lower = self.vec_sub(f_star, abs_margin)
         f_upper = self.vec_add(f_star, abs_margin)
 
         return f_lower, f_upper
     
+
 
