@@ -1,6 +1,9 @@
 class Reachability:
-    def __init__(self, tau):
+    def __init__(self, tau, D_x=None, D_w=None):
         self.tau = tau
+        self.D_x = D_x
+        self.D_w = D_w
+        
 
     def vec_add(self, u, v):
         return [u[i] + v[i] for i in range(len(u))]
@@ -32,6 +35,8 @@ class Reachability:
 
     # approximation with Bounds 
     def reachable_interval_Bounds(self, x_lower, x_upper, u, w_lower, w_upper):
+        if self.D_x is None or self.D_w is None:
+            raise ValueError("D_x and D_w must be defined")
         x_star = self.vec_mul_scalar(self.vec_add(x_lower, x_upper), 0.5)
         w_star = self.vec_mul_scalar(self.vec_add(w_lower, w_upper), 0.5)
 
@@ -50,5 +55,6 @@ class Reachability:
 
         return f_lower, f_upper
     
+
 
 
