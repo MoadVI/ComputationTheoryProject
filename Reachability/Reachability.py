@@ -1,21 +1,9 @@
+from Math.Math import *
 class Reachability:
     def __init__(self, tau, D_x=None, D_w=None):
         self.tau = tau
         self.D_x = D_x
         self.D_w = D_w
-        
-
-    def vec_add(self, u, v):
-        return [u[i] + v[i] for i in range(len(u))]
-
-    def vec_sub(self, u, v):
-        return [u[i] - v[i] for i in range(len(u))]
-
-    def vec_mul_scalar(self, u, s):
-        return [u[i] * s for i in range(len(u))]
-    
-    def mat_vec_mul(self, M, v):
-        return [sum(M[i][j] * v[j] for j in range(len(v))) for i in range(len(M))]
 
 
     def f(self, x, u, w):
@@ -55,6 +43,7 @@ class Reachability:
 
         return f_lower, f_upper
     
+
 
 
 
